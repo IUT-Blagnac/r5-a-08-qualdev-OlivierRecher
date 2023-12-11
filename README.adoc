@@ -29,4 +29,34 @@ Screen résultat du test
 
 image::images/tp1.png[width=100%]
 
-== TP2...
+== TP2
+
+Order.java
+
+---
+package dojo;
+
+import java.util.List;
+
+public class Order {
+    private String owner;
+    private String target;
+    private List<String> cocktails;
+
+    public void declareOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public void declareTarget(String target) {
+        this.target = target;
+    }
+
+    public List<String> getCocktails() {
+        return cocktails;
+    }
+}
+---
+
+Screen résultat du test
+
+image::images/tp2.png[width=100%]
