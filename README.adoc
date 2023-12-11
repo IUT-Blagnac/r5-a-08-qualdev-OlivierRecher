@@ -8,8 +8,8 @@ Ce dépôt concerne les rendus de mailto:A_changer@etu.univ-tlse2.fr[Jonh Doe].
 == TP1
 
 is_it_friday_yet.feature
-
 ---
+
 Feature: Is it friday yes
 
   Scenario Outline: Check if it's Friday on a Sunday
@@ -22,6 +22,7 @@ Feature: Is it friday yes
     | Friday         | TGIF   |
     | Sunday         | Nope   |
     | anything else! | Nope   |
+
 ---
 
 Screen résultat du test
