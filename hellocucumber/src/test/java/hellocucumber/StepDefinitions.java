@@ -22,7 +22,6 @@ public class StepDefinitions {
     public void the_scenario_passes() {
     }
 
-
      @Given("today is {string}")
     public void today_is(String day) {
         this.today = day;
