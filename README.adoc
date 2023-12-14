@@ -9,7 +9,7 @@ Ce dépôt concerne les rendus de mailto:A_changer@etu.univ-tlse2.fr[Jonh Doe].
 
 is_it_friday_yet.feature
 
----
+----
 Feature: Is it friday yes
 
   Scenario Outline: Check if it's Friday on a Sunday
@@ -23,7 +23,7 @@ Feature: Is it friday yes
     | Sunday         | Nope   |
     | anything else! | Nope   |
 
----
+----
 
 Screen résultat du test
 
@@ -33,7 +33,7 @@ image::images/tp1.png[width=100%]
 
 Order.java
 
----
+----
 package dojo;
 
 import java.util.List;
@@ -55,8 +55,85 @@ public class Order {
         return cocktails;
     }
 }
----
+----
 
 Screen résultat du test
 
 image::images/tp2.png[width=100%]
+
+== TP3
+
+test.feature
+
+----
+Feature: Homework Management
+
+  Scenario Outline: Add a New Homework
+    Given I am student
+    When I add a new homework with the title "<title>"
+    Then the homework is "<result>" 
+
+    Examples:
+    | title                             | result |
+    | Mathematics Homework            | created   |
+    | SAE                             | created   |
+    
+
+  Scenario Outline: Work on the Homework
+    Given that the homework "<title>" exists
+    When I work on the homework 
+    Then the homework is now "<result>" 
+
+
+    Examples:
+    | title                             | result |
+    | Mathematics Homework            | done   |
+    | SAE                             | done   |
+----
+
+testSteps.js
+
+----
+const { Given, When, Then } = require('@cucumber/cucumber');
+const assert = require('assert');
+
+let student;
+let homeworks = [];
+let exist;
+let result1;
+let result2;
+
+Given('I am student', function () {
+    student = "student";
+});
+
+When('I add a new homework with the title {string}', function (title) {
+    homeworks.push(title);
+    result1 = "created";
+});
+
+Then('the homework is {string}', function (expectedResult) {
+    assert(result1, expectedResult);
+});
+
+
+Given('that the homework {string} exists', function (title) {
+    exist = homeworks.includes(title);
+});
+
+When('I work on the homework', function () {
+    if (exist) {
+        result2 = "done";
+    }
+});
+
+Then('the homework is now {string}', function (expectedResult) {
+    assert(result2, expectedResult);
+});
+----
+
+L'objectif était ici de tester que lorsque j'avais des devoirs à rendre, je les ajoutais bien à ma liste de devoirs à faire et je vérifiais qu'ils avaient bien été faits.
+
+Screen résultat du test
+
+image::images/tp3.png[width=100%]
